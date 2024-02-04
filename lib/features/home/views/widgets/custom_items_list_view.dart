@@ -11,7 +11,9 @@ class CustomItemsListBuilder extends StatelessWidget {
       itemBuilder: (context, index) {
         return const Padding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: CustomItems(),
+          child: Text('data')
+          
+          // CustomItems(),
         );
       },
     );

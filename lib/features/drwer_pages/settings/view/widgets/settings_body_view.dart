@@ -34,7 +34,8 @@ class SettingsBodyView extends StatelessWidget {
                   },
                   title: 'theamMode'.tr(),
                   subtitle: 'light'.tr()),
-              Text('updatingSettings'.tr(), style: AppStyls.styleregulard20(context)),
+              Text('updatingSettings'.tr(),
+                  style: AppStyls.styleregulard20(context)),
               CustomSwichListTile(
                   value: controller.notification,
                   title: 'enableNotification'.tr(),
@@ -48,8 +49,7 @@ class SettingsBodyView extends StatelessWidget {
                     controller.editUpdateMessages(updateMessages1: value);
                   }),
               Text('aboutApp'.tr(), style: AppStyls.styleregulard20(context)),
-               CustomSettingsListTile(
-                  title: 'vesoin'.tr(), subtitle: '1.0')
+              CustomSettingsListTile(title: 'vesoin'.tr(), subtitle: '1.0')
             ],
           ),
         );

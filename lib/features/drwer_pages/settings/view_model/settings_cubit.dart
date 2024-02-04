@@ -10,13 +10,13 @@ class SettingsCubit extends Cubit<SettingsState> {
   bool updateMessages = true;
 
   void editNotification({required bool notification1}) {
-    notification=notification1;
-    
+    notification = notification1;
+
     emit(SettingsInitial());
   }
 
   void editUpdateMessages({required bool updateMessages1}) {
-    updateMessages=updateMessages1;
+    updateMessages = updateMessages1;
     emit(SettingsInitial());
   }
 

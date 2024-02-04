@@ -15,7 +15,7 @@ abstract class AppStyls {
   static TextStyle styleregular40(context) {
     return TextStyle(
       color: Colors.white,
-      fontSize: getResponsiveFontSize(context, fontSize: 40),
+      fontSize: getResponsiveFontSize(context, fontSize: 35),
       fontFamily: 'Tajawal',
       fontWeight: FontWeight.w400,
     );

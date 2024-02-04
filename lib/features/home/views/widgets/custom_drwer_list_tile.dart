@@ -16,7 +16,7 @@ class CustomDrwerListTile extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: AppStyls.styleSemiBold25(context),
+        style: AppStyls.styleregulard22(context),
       ),
       onTap: onTap,
       leading: Icon(

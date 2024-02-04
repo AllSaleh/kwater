@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:khwater/core/constans/colors.dart';
 
 class AddMessgeTextFiled extends StatelessWidget {
+  final TextEditingController controller;
   const AddMessgeTextFiled({
-    super.key,
+    super.key, required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: TextEditingController(),
+      controller: controller,
       cursorColor: kPrimaryColor,
       cursorHeight: 30,
-      maxLines: 10,
+      maxLines: 12,
       decoration: InputDecoration(
         border: border(),
         enabledBorder: border(),

@@ -20,5 +20,14 @@
     "contint":"المحتوى",
     "chooseCategorie":"اختر القسم",
     "addCategorie":"اضافة قسم",
-    "addMessage":"اضافة محتوى"
+    "addMessage":"اضافة محتوى",
+    "copied":"تم النسخ الى الحافظه",
+    "chooseCateg":"الرجاء اختيار القسم",
+    "noMessge":"الرجاء كتابة المحتوى",
+    "addedd":"تمت الاضافه",
+    "interNetConntction":"الرجاء التاكد من اتصال الانترنت",
+    "existing":"هذا القسم موجود مسبقا",
+    "enterCategorie":"الرجاء كتابة القسم",
+    "noData":"لايوجد محتوى بهذا النص",
+    "udate":"تحديث"
 }

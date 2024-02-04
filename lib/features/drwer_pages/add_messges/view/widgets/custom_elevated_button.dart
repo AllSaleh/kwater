@@ -19,9 +19,11 @@ class CustomElevatedButton extends StatelessWidget {
             minimumSize: Size(MediaQuery.sizeOf(context).width * .6, 50),
           ),
           onPressed: onTap,
-          child: Text(
-            title,
-            style: AppStyls.styleregulard22(context),
+          child: Center(
+            child: Text(
+              title,
+              style: AppStyls.styleregulard22(context),
+            ),
           )),
     );
   }

@@ -6,7 +6,11 @@ class CustomSwichListTile extends StatelessWidget {
   final String title;
   final bool value;
   final void Function(bool) onChanged;
-  const CustomSwichListTile({super.key, required this.title,required this.onChanged, required this.value});
+  const CustomSwichListTile(
+      {super.key,
+      required this.title,
+      required this.onChanged,
+      required this.value});
 
   @override
   Widget build(BuildContext context) {

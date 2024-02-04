@@ -1,11 +1,19 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:khwater/core/constans/colors.dart';
+import 'package:khwater/core/functions/custom_snack_bar.dart';
 import 'package:khwater/core/styls.dart';
+import 'package:khwater/features/home/data/model/custom_messges_model.dart';
+import 'package:khwater/features/home/views/widgets/custom_item_icon.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CustomItems extends StatelessWidget {
+  final CustomMessgesModel  messages;
   const CustomItems({
     super.key,
+    required this.messages,
   });
 
   @override
@@ -26,15 +34,14 @@ class CustomItems extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '''يَارب نعيش شعور هذه الآية 💗 :
-‏﴿فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِنْ فَضْلِهِ﴾''',
+                  messages.message!,
                   style: AppStyls.styleregulard18(context),
                 ),
                 const SizedBox(height: 8),
                 Align(
                     alignment: AlignmentDirectional.bottomEnd,
                     child: Text(
-                      'اسلاميه',
+                      messages.categorie??'',
                       style: AppStyls.styleregulard20(context),
                     ))
               ],
@@ -46,23 +53,20 @@ class CustomItems extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Icon(
-                  FontAwesomeIcons.copy,
-                  color: kPrimaryColor,
-                ),
-                const Icon(
-                  FontAwesomeIcons.whatsapp,
-                  color: kPrimaryColor,
-                ),
-                Container(),
-                const Icon(
-                  FontAwesomeIcons.heart,
-                  color: kPrimaryColor,
-                ),
-                const Icon(
-                  FontAwesomeIcons.share,
-                  color: kPrimaryColor,
-                )
+                CustomItemIcon(
+                    icon: FontAwesomeIcons.copy,
+                    onTap: () {
+                      Clipboard.setData(
+                          ClipboardData(text: messages.message!));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          customSnackBar(context, title: 'copied'.tr()));
+                    }),
+                CustomItemIcon(
+                    icon: Icons.share,
+                    onTap: () async {
+                      await Share.share(messages.message!);
+                    }),
+                CustomItemIcon(icon: FontAwesomeIcons.heart, onTap: () {}),
               ],
             ),
             // SizedBox(

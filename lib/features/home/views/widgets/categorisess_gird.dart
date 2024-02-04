@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:khwater/features/drwer_pages/add_messges/view/widgets/custom_add_loading.dart';
+import 'package:khwater/features/home/view_model/home_cubit.dart';
 import 'package:khwater/features/home/views/widgets/custom_categorises.dart';
 
 class CategorisessGrid extends StatelessWidget {
@@ -6,19 +9,27 @@ class CategorisessGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 30,
-        mainAxisExtent: 60,
-        crossAxisSpacing: 10,
-        crossAxisCount: 2,
-      ),
-      itemCount: 20,
-      itemBuilder: (BuildContext context, int index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: CustomIcategorises(),
-        );
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        if (state is HomeSucsess) {
+          return SliverGrid(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: CustomIcategorises(
+                    categorissModel: state.categories[index],
+                  ),
+                );
+              }, childCount: state.categories.length),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 30,
+                mainAxisExtent: 60,
+                crossAxisSpacing: 10,
+                crossAxisCount: 2,
+              ));
+        } else {
+          return const SliverToBoxAdapter(child: CustomAddLoading());
+        }
       },
     );
   }

@@ -8,7 +8,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      
       drawerEnableOpenDragGesture: false,
       drawer: CustomDrwer(),
       body: SafeArea(

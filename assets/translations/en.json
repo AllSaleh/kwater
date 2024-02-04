@@ -20,5 +20,14 @@
     "contint":"Content",
     "chooseCategorie":"Choose Categorie",
     "addCategorie":"Add Categorie",
-    "addMessage":"Add Content"
+    "addMessage":"Add Content",
+    "copied":"Copied To Clibord",
+    "chooseCateg":"Please Choose Categorie",
+    "noMessge":"Please Write Content",
+    "addedd":"Addedd Sucsess",
+    "interNetConntction":"Please Cheek Internet Conniction",
+    "existing":"This Categorie is Already Existing",
+    "enterCategorie":"Please Enter Categorie",
+    "noData":"No Content of This Text",
+    "udate":"Update"
 }
