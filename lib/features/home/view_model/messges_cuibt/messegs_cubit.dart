@@ -11,12 +11,15 @@ class MessegsCubit extends Cubit<MessegsState> {
   final MessagesRepo messagesRepo;
   String? categorie;
   TextEditingController message = TextEditingController();
+  
 
   Future<void> getCustomMessages({required int id, required String cat}) async {
     categorie = cat;
 
     var response = await messagesRepo.getMessges(id: id);
-    response.fold((faliue) {}, (messages) {
+    response.fold((faliue) {
+      emit(MessegsFailure(errorMessage: faliue.errorMessage));
+    }, (messages) {
       emit(MessegsSucsess(messages));
     });
   }
@@ -28,8 +31,10 @@ class MessegsCubit extends Cubit<MessegsState> {
     response.fold((failure) {
       emit(MessegsFailure(errorMessage: failure.errorMessage));
     }, (searchMessages) {
-      // print(searchMessages);
       emit(MessegsSucsessSearch(searchMessages: searchMessages));
     });
   }
+
+ 
+  
 }

@@ -32,7 +32,7 @@ abstract class AppStyls {
 
   static TextStyle styleregulard18(context) {
     return TextStyle(
-      // color: Colors.white,
+      // color: 
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontFamily: 'Tajawal',
       fontWeight: FontWeight.w400,

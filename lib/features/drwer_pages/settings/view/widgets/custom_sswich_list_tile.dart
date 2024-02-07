@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khwater/core/constans/colors.dart';
+import 'package:khwater/core/functions/is_light.dart';
 import 'package:khwater/core/styls.dart';
 
 class CustomSwichListTile extends StatelessWidget {
@@ -21,7 +22,7 @@ class CustomSwichListTile extends StatelessWidget {
         title: Text(
           title,
           style:
-              AppStyls.styleregulard22(context).copyWith(color: Colors.black),
+              AppStyls.styleregulard22(context).copyWith(color: isLight() ? Colors.black : Colors.white),
         ),
         value: value,
         onChanged: onChanged);

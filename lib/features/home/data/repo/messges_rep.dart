@@ -9,6 +9,12 @@ abstract class MessagesRepo {
       {required int id});
   Future<Either<Failure, List<CustomMessgesModel>>> searchMessges(
       {required String message, required String categorie});
+
+  Future<Either<Failure, dynamic>> addFaviorte({required int id});
+  Future<Either<Failure, dynamic>> removeFaviorte({required int id});
+  Future<Either<Failure, List<CustomMessgesModel>>> getFaviorte();
+
+  Future<Either<Failure, List<CustomMessgesModel>>> getSpical();
 }
 
 class MessagesRepoIm implements MessagesRepo {
@@ -17,14 +23,20 @@ class MessagesRepoIm implements MessagesRepo {
   Future<Either<Failure, List<CustomMessgesModel>>> getMessges(
       {required int id}) async {
     try {
-      var response = await sqlHeper.readdata(
-          'SELECT  * FROM messages JOIN categoris ON messages.id_categorie=categoris.categories_id WHERE messages.id_categorie=$id');
+      var response = await sqlHeper.readdata('''
+SELECT * FROM
+ (messages JOIN categoris ON messages.id_categorie=categoris.categories_id)
+  JOIN faviorte ON messages.message_id=faviorte.faviorte_id WHERE messages.id_categorie=$id''');
 
       List<CustomMessgesModel> messages = [];
       for (var item in response) {
         messages.add(CustomMessgesModel.fromJson(item));
       }
-      return right(messages);
+      if (messages.isEmpty) {
+        return left(Diohandling('nomessages'.tr()));
+      } else {
+        return right(messages);
+      }
     } catch (e) {
       return left(Diohandling(e.toString()));
     }
@@ -35,20 +47,93 @@ class MessagesRepoIm implements MessagesRepo {
       {required String message, required String categorie}) async {
     try {
       var response = await sqlHeper.readdata(
-          "SELECT * FROM messages JOIN categoris ON messages.id_categorie=categoris.categories_id WHERE messages.message LIKE '%$message%' AND messages.message_status=0 AND categoris.categorie='$categorie'");
+          "SELECT * FROM(messages JOIN categoris ON messages.id_categorie=categoris.categories_id) JOIN faviorte ON messages.message_id=faviorte.faviorte_id WHERE messages.message LIKE '%$message%' AND messages.message_status=1 AND categoris.categorie='$categorie'");
       List<CustomMessgesModel> messages = [];
 
       for (var item in response) {
         messages.add(CustomMessgesModel.fromJson(item));
       }
+
       if (messages.isEmpty) {
         return left(Diohandling('noData'.tr()));
       } else {
-   
         return right(messages);
       }
     } catch (e) {
-     
+      return left(Diohandling(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, dynamic>> addFaviorte({required int id}) async {
+    try {
+      var response = await sqlHeper.uPdatedata(
+          'UPDATE faviorte SET isFaviorte=1 WHERE faviorte_id=$id ');
+      if (response > 0) {
+        return right(true);
+      } else {
+        return left(Diohandling('fiureAddingFavioret'.tr()));
+      }
+    } catch (e) {
+      return left(Diohandling(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, dynamic>> removeFaviorte({required int id}) async {
+    try {
+      var response = await sqlHeper.uPdatedata(
+          'UPDATE faviorte SET isFaviorte=0 WHERE faviorte_id=$id ');
+      if (response > 0) {
+        return right(true);
+      } else {
+        return left(Diohandling('fiuredeletingFavioret'.tr()));
+      }
+    } catch (e) {
+      return left(Diohandling(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CustomMessgesModel>>> getFaviorte() async {
+    try {
+      var response = await sqlHeper.readdata('''
+SELECT * FROM
+ (messages JOIN categoris ON messages.id_categorie=categoris.categories_id)
+  JOIN faviorte ON messages.message_id=faviorte.faviorte_id WHERE faviorte.isFaviorte=1''');
+
+      List<CustomMessgesModel> messages = [];
+      for (var item in response) {
+        messages.add(CustomMessgesModel.fromJson(item));
+      }
+      if (messages.isEmpty) {
+        return left(Diohandling('nomessages'.tr()));
+      } else {
+        return right(messages);
+      }
+    } catch (e) {
+      return left(Diohandling(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CustomMessgesModel>>> getSpical() async {
+    try {
+      var response = await sqlHeper.readdata('''
+SELECT * FROM
+ (messages JOIN categoris ON messages.id_categorie=categoris.categories_id)
+  JOIN faviorte ON messages.message_id=faviorte.faviorte_id WHERE messages.spical=1''');
+
+      List<CustomMessgesModel> messages = [];
+      for (var item in response) {
+        messages.add(CustomMessgesModel.fromJson(item));
+      }
+      if (messages.isEmpty) {
+        return left(Diohandling('nomessages'.tr()));
+      } else {
+        return right(messages);
+      }
+    } catch (e) {
       return left(Diohandling(e.toString()));
     }
   }

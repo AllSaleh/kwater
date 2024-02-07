@@ -8,18 +8,21 @@ class CustomMessgesModel {
   num? categoriesId;
   num? categorieStatus;
   String? categorie;
+  num? faviorte_id;
+  num? isFaviorte;
 
-  CustomMessgesModel({
-    this.messageId,
-    this.message,
-    this.messageStatus,
-    this.isNew,
-    this.spical,
-    this.idCategorie,
-    this.categoriesId,
-    this.categorieStatus,
-    this.categorie,
-  });
+  CustomMessgesModel(
+      {this.messageId,
+      this.message,
+      this.messageStatus,
+      this.isNew,
+      this.spical,
+      this.idCategorie,
+      this.categoriesId,
+      this.categorieStatus,
+      this.categorie,
+      this.faviorte_id,
+      this.isFaviorte});
 
   factory CustomMessgesModel.fromJson(Map<String, dynamic> json) {
     return CustomMessgesModel(
@@ -32,6 +35,8 @@ class CustomMessgesModel {
       categoriesId: num.tryParse(json['categories_id'].toString()),
       categorieStatus: num.tryParse(json['categorie_status'].toString()),
       categorie: json['categorie']?.toString(),
+      faviorte_id: num.tryParse(json['faviorte_id'].toString()),
+      isFaviorte: num.tryParse(json['isFaviorte'].toString()),
     );
   }
 

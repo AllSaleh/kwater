@@ -29,5 +29,13 @@
     "existing":"هذا القسم موجود مسبقا",
     "enterCategorie":"الرجاء كتابة القسم",
     "noData":"لايوجد محتوى بهذا النص",
-    "udate":"تحديث"
+    "udate":"تحديث الرسايل",
+    "nomessages":"لايوجد رسايل",
+    "updatingSucsess":"تم التحديث بنجاح",
+    "fiureAddingFavioret":"تعذرت الاضافة الى المفضلة",
+    "addeddFafiortSucsess":"تمت الاضافة الى المفضلة",
+    "fiuredeletingFavioret":"تعذر الحذف من المفضلة",
+    "removedFafiortSucsess":"تمت الحذف من المفضلة"
+
+
 }

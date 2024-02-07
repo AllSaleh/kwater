@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khwater/core/localization/localization_cubit.dart';
 import 'package:khwater/core/styls.dart';
 import 'package:khwater/features/home/view_model/home_cubit.dart';
+import 'package:khwater/main.dart';
 
 class CustomTabBar extends StatelessWidget {
   const CustomTabBar({
@@ -17,8 +18,12 @@ class CustomTabBar extends StatelessWidget {
         return TabBar(
             isScrollable: true,
             onTap: (value) {
-              BlocProvider.of<HomeCubit>(context).chanePage(index: value);
-              BlocProvider.of<HomeCubit>(context).changeIndex(newIndex: value);
+              if (sharedPrefe.getBool('hasData') == null)
+                return;
+              else {
+                BlocProvider.of<HomeCubit>(context)
+                    .changeIndex(newIndex: value);
+              }
             },
             indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
             labelStyle:

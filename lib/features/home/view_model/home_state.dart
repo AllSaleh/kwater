@@ -5,6 +5,16 @@ sealed class HomeState {}
 
 final class HomeInitial extends HomeState {}
 
+final class HomeLoading extends HomeState {}
+final class HomeFailure extends HomeState 
+{
+  final String errorMessage;
+
+  HomeFailure({required this.errorMessage});
+}
+
+
+
 final class HomeSucsessNew extends HomeState {
 
   final List<CustomMessgesModel> messages;

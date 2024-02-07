@@ -22,7 +22,8 @@ class SearchBodyView extends StatelessWidget {
                 return Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
-                    child: CustomItems(messages: state.messages[index])
+                    child:
+                        CustomItems(index: 4, messages: state.messages[index])
                     //  /CustomItems()
                     );
               }, childCount: state.messages.length));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khwater/core/functions/is_light.dart';
 import 'package:khwater/core/styls.dart';
 
 class CustomSettingsListTile extends StatelessWidget {
@@ -13,14 +14,15 @@ class CustomSettingsListTile extends StatelessWidget {
       onTap: onTap,
       title: Text(
         title,
-        style: AppStyls.styleregulard22(context).copyWith(color: Colors.black),
+        style: AppStyls.styleregulard22(context)
+            .copyWith(color: isLight() ? Colors.black : Colors.white),
       ),
       subtitle: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text(
           subtitle,
-          style:
-              AppStyls.styleregulard22(context).copyWith(color: Colors.black),
+          style: AppStyls.styleregulard22(context)
+              .copyWith(color: isLight() ? Colors.black : Colors.white),
         ),
       ),
     );

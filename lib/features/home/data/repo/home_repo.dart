@@ -9,6 +9,7 @@ abstract class HomeRepo {
   Future<Either<Failure, List<CustomMessgesModel>>> getNewMessages();
 
   Future<Either<Failure, List<CustomMessgesModel>>> getSpicalMessages();
+  
 
 
 

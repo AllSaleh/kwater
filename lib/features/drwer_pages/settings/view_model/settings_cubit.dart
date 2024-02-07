@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:khwater/main.dart';
 
 part 'settings_state.dart';
 
@@ -7,7 +8,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsInitial());
 
   bool notification = true;
-  bool updateMessages = true;
+  bool? updateMessages = sharedPrefe.getBool('updating');
 
   void editNotification({required bool notification1}) {
     notification = notification1;
@@ -16,7 +17,9 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void editUpdateMessages({required bool updateMessages1}) {
+    sharedPrefe.setBool('updating', updateMessages1);
     updateMessages = updateMessages1;
+
     emit(SettingsInitial());
   }
 

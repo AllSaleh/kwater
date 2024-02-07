@@ -29,5 +29,11 @@
     "existing":"This Categorie is Already Existing",
     "enterCategorie":"Please Enter Categorie",
     "noData":"No Content of This Text",
-    "udate":"Update"
+    "udate":"Update Messages",
+    "nomessages":"No Messages",
+    "updatingSucsess":"Updating Sucsess",
+    "fiureAddingFavioret":"Failed Adding To Faviorte",
+    "addeddFafiortSucsess":"Addedd To Faviorte Sucsess",
+    "fiuredeletingFavioret":"Failed Remove From Faviorte",
+    "removedFafiortSucsess":"Removed From Faviorte Sucsess"
 }

@@ -13,7 +13,7 @@ class ChangeLanguageContiner extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       iconPadding: EdgeInsets.zero,
-      // contentPadding: EdgeInsets.zero,
+      // contentPadding: EdgeInsets.zero
       insetPadding: EdgeInsets.zero,
       icon: Container(
         // width: double.infinity,

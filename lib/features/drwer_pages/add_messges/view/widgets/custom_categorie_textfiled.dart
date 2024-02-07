@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:khwater/core/constans/colors.dart';
+import 'package:khwater/core/functions/is_light.dart';
 import 'package:khwater/core/styls.dart';
 
 class CustomCategoriTextFiled extends StatelessWidget {
@@ -23,6 +24,9 @@ class CustomCategoriTextFiled extends StatelessWidget {
   }
 
   OutlineInputBorder border() {
-    return OutlineInputBorder(borderRadius: BorderRadius.circular(15));
+    return OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide:
+            BorderSide(color: isLight() ? kPrimaryColor : Colors.white));
   }
 }

@@ -11,6 +11,8 @@ SnackBar customSnackBar(BuildContext context, {required String title}) {
       content: Center(
           child: Text(
         title,
-        style: AppStyls.styleregulard18(context),
+        style: AppStyls.styleregulard18(context).copyWith(
+          color:  Colors.white,
+        ),
       )));
 }

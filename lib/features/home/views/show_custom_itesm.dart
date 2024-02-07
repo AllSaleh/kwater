@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:khwater/core/constans/colors.dart';
+import 'package:khwater/core/constans/error_text.dart';
+
+import 'package:khwater/features/drwer_pages/add_messges/view/widgets/custom_add_loading.dart';
 import 'package:khwater/features/home/data/model/categoriss_model.dart';
 import 'package:khwater/features/home/data/repo/messges_rep.dart';
 import 'package:khwater/features/home/view_model/messges_cuibt/messegs_cubit.dart';
@@ -16,6 +19,7 @@ class ShowCustomItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
       create: (context) => MessegsCubit(MessagesRepoIm())
         ..getCustomMessages(
@@ -53,6 +57,7 @@ class ShowCustomItems extends StatelessWidget {
                           vertical: 10,
                         ),
                         child: CustomItems(
+                          index: 0,
                           messages: state.messages[index],
                         ),
                       );
@@ -72,6 +77,7 @@ class ShowCustomItems extends StatelessWidget {
                           vertical: 10,
                         ),
                         child: CustomItems(
+                          index: 0,
                           messages: state.searchMessages[index],
                         ),
                       );
@@ -79,8 +85,10 @@ class ShowCustomItems extends StatelessWidget {
                   ),
                 ],
               );
+            } else if (state is MessegsFailure) {
+              return CustomTextError(errorMessage: state.errorMessage);
             } else {
-              return const SizedBox();
+              return const CustomAddLoading();
             }
           },
         ),

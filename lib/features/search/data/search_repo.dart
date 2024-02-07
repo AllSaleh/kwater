@@ -15,8 +15,11 @@ class SearchRepIm implements SearchRep {
   Future<Either<Failure, List<CustomMessgesModel>>> featchMessges(
       {required String messge}) async {
     try {
-      var response = await sqlHeper.readdata(
-          "SELECT * FROM messages JOIN categoris ON messages.id_categorie=categoris.categories_id WHERE message LIKE '%$messge%' AND message_status=0");
+      var response = await sqlHeper.readdata('''SELECT * FROM
+ (messages JOIN categoris ON messages.id_categorie=categoris.categories_id)
+  JOIN faviorte ON messages.message_id=faviorte.faviorte_id
+          
+          WHERE message LIKE '%$messge%' AND message_status=1''');
 
       List<CustomMessgesModel> messages = [];
       for (var item in response) {

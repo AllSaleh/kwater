@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -16,7 +17,7 @@ class SqlHeper {
   inizalizeDb() async {
     String databasepath = await getDatabasesPath();
     String path = join(databasepath, 'khwater.db');
-    Database mydb = await openDatabase(path, onCreate: _onCreate, version: 2);
+    Database mydb = await openDatabase(path, onCreate: _onCreate, version: 3);
     return mydb;
   }
 
@@ -39,7 +40,12 @@ class SqlHeper {
 )
   
    ''');
-
+    await db.execute('''
+   CREATE TABLE "faviorte" (
+  "faviorte_id" INTEGER NOT NULL,
+  "isFaviorte" INTEGER DEFAULT 0
+)
+   ''');
     log('crated');
   }
 
@@ -55,21 +61,33 @@ class SqlHeper {
     return response;
   }
 
-  updatedata(String sql) async {
-    Database? mydb = await db;
-    int response = await mydb!.rawUpdate(sql);
-    return response;
-  }
-
   deletdata(String sql) async {
     Database? mydb = await db;
     int response = await mydb!.rawDelete(sql);
+    return response;
+  }
+  uPdatedata(String sql) async {
+    Database? mydb = await db;
+    int response = await mydb!.rawUpdate(sql);
     return response;
   }
 
   addMessage(dynamic testingModel) async {
     final db = _db;
     final res = await db?.insert('messages', testingModel);
+
+    return res;
+  }
+   addFaviorte(dynamic faviorte) async {
+    final db = _db;
+    final res = await db?.insert('faviorte', faviorte);
+
+    return res;
+  }
+
+  updateMessage(Map<String, dynamic> messages, int id) async {
+    final db = _db;
+    final res = await db?.update('messages', messages, where: 'message_id=$id');
 
     return res;
   }
@@ -81,16 +99,16 @@ class SqlHeper {
     return res;
   }
 
-  getLocalData() async {
-    Database? mydb = _db;
-    final response = await mydb?.query('messages');
-    return response;
+  addFaviore(Map<String,dynamic> faviorte) async {
+    final db = _db;
+    final res = await db?.insert('faviorte', faviorte);
+
+    return res;
   }
 
   mydeletedatabase() async {
     String databasepath = await getDatabasesPath();
     String path = join(databasepath, 'khwater.db');
     await deleteDatabase(path);
-    log('delet');
   }
 }
