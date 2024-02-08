@@ -13,7 +13,7 @@ class NewMessagesCubit extends Cubit<NewMessagesState> {
 
 
   Future<void> getNewMessages()async{
-    var response=await messagesRepo.getSpical();
+    var response=await messagesRepo.getNew();
 
     response.fold((failure) {
       emit( NewMessagesFailure(errorMessage: failure.errorMessage));

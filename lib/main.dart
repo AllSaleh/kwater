@@ -22,7 +22,8 @@ void main() async {
       path: 'assets/translations',
       startLocale: const Locale('ar'),
       supportedLocales: const [Locale('ar'), Locale('en')],
-      child: const Khwater()));
+      child: 
+         Khwater()));
 }
 
 class Khwater extends StatelessWidget {
@@ -86,11 +87,7 @@ class Child extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           theme: BlocProvider.of<LocalizationCubit>(context).themeData,
-          //  ThemeData(
-          //     // brightness: Brightness.dark,
-          //     fontFamily: 'Tajawal',
-          //     iconTheme: const IconThemeData(color: Colors.white),
-          //     dividerTheme: const DividerThemeData(color: Colors.white)),
+        
           routerConfig: AppRouters.routers,
           debugShowCheckedModeBanner: false,
         );

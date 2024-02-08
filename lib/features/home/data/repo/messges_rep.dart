@@ -15,6 +15,8 @@ abstract class MessagesRepo {
   Future<Either<Failure, List<CustomMessgesModel>>> getFaviorte();
 
   Future<Either<Failure, List<CustomMessgesModel>>> getSpical();
+  Future<Either<Failure, List<CustomMessgesModel>>> getNew();
+
 }
 
 class MessagesRepoIm implements MessagesRepo {
@@ -123,6 +125,28 @@ SELECT * FROM
 SELECT * FROM
  (messages JOIN categoris ON messages.id_categorie=categoris.categories_id)
   JOIN faviorte ON messages.message_id=faviorte.faviorte_id WHERE messages.spical=1''');
+
+      List<CustomMessgesModel> messages = [];
+      for (var item in response) {
+        messages.add(CustomMessgesModel.fromJson(item));
+      }
+      if (messages.isEmpty) {
+        return left(Diohandling('nomessages'.tr()));
+      } else {
+        return right(messages);
+      }
+    } catch (e) {
+      return left(Diohandling(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, List<CustomMessgesModel>>> getNew() async{
+   try {
+      var response = await sqlHeper.readdata('''
+SELECT * FROM
+ (messages JOIN categoris ON messages.id_categorie=categoris.categories_id)
+  JOIN faviorte ON messages.message_id=faviorte.faviorte_id WHERE messages.is_new=1''');
 
       List<CustomMessgesModel> messages = [];
       for (var item in response) {
