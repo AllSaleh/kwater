@@ -35,7 +35,16 @@
     "fiureAddingFavioret":"تعذرت الاضافة الى المفضلة",
     "addeddFafiortSucsess":"تمت الاضافة الى المفضلة",
     "fiuredeletingFavioret":"تعذر الحذف من المفضلة",
-    "removedFafiortSucsess":"تمت الحذف من المفضلة"
+    "removedFafiortSucsess":"تمت الحذف من المفضلة",
+    "connectionTimeOut":"فشللت مهلة الاتصال",
+    "sendTimeOut":"فشللت مهلة الارسال",
+    "receiveTimeout":"فشلت مهلة الاستلام",
+    "connectionError":"فشل الانصال بالسيرفر",
+    "cancelConnection":"اغلق الاتصال بالسيرفر",
+    "problem":"يوجد مشكلة في السيرفر الرجاء المحاولة لاحقا",
+    "connractus":"للتواصل معنا "
+    
+
 
 
 }

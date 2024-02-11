@@ -1,48 +1,48 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 abstract class Failure {
   final String errorMessage;
 
-  Failure(this.errorMessage );
+  Failure(this.errorMessage);
 }
 
 class Diohandling extends Failure {
   Diohandling(super.errorMessage);
 
- 
-
   factory Diohandling.fromDioError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
-        return Diohandling("فشلة مهلة الاتصال");
+        return Diohandling('connectionTimeOut'.tr());
       case DioExceptionType.sendTimeout:
-        return Diohandling('فشلة مهلة الاتصال');
+        return Diohandling('sendTimeOut'.tr());
       case DioExceptionType.receiveTimeout:
-        return Diohandling('فشلة مهلة');
+        return Diohandling('receiveTimeout'.tr());
       case DioExceptionType.badResponse:
         return dioHandlinResponse(
             error.response!.statusCode, error.response!.data);
 
       case DioExceptionType.connectionError:
-        return Diohandling('مشكلة في اتصال السيرفر');
+        return Diohandling('connectionError'.tr());
       case DioExceptionType.cancel:
-        return Diohandling('cancel');
+        return Diohandling('cancelConnection'.tr());
 
       default:
-        return Diohandling('الرجاء المحاوله');
+        return Diohandling('connectionError'.tr());
     }
   }
 }
 
 dioHandlinResponse(int? statusCode, dynamic response) {
+  
   if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
     //can changes
-    return Diohandling(response['error']['message']);
+    return Diohandling('problem'.tr());
   } else if (statusCode == 404) {
-    return Diohandling('Your request not found, Please try later!');
+    return Diohandling('problem'.tr());
   } else if (statusCode == 500) {
-    return Diohandling('Internal Server error, Please try later');
+    return Diohandling('problem'.tr());
   } else {
-    return Diohandling('Opps There was an Error, Please try again');
+    return Diohandling('connectionError'.tr());
   }
 }

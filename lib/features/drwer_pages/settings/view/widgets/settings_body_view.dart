@@ -38,10 +38,11 @@ class SettingsBodyView extends StatelessWidget {
                       },
                       title: 'theamMode'.tr(),
                       subtitle: isLight() ? 'light'.tr() : 'dark'.tr()),
+                  const SizedBox(height: 15),
                   Text('updatingSettings'.tr(),
                       style: AppStyls.styleregulard20(context)),
                   CustomSwichListTile(
-                      value: controller.notification,
+                      value: controller.notification!,
                       title: 'enableNotification'.tr(),
                       onChanged: (value) {
                         controller.editNotification(notification1: value);
@@ -52,9 +53,12 @@ class SettingsBodyView extends StatelessWidget {
                       onChanged: (value) {
                         controller.editUpdateMessages(updateMessages1: value);
                       }),
+                  const SizedBox(height: 15),
                   Text('aboutApp'.tr(),
                       style: AppStyls.styleregulard20(context)),
-                  CustomSettingsListTile(title: 'vesoin'.tr(), subtitle: '1.0')
+                  CustomSettingsListTile(title: 'vesoin'.tr(), subtitle: '1.1'),
+                  const SizedBox(height: 15),
+                 
                 ],
               ),
             );

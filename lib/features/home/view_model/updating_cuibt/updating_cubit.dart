@@ -15,6 +15,7 @@ class UpdatingCubit extends Cubit<UpdatingState> {
       response.fold((failure) {
         emit(UpdatingFailure(errorMessage: failure.errorMessage));
       }, (sucsess) {
+        
         emit(UpdatingSucsess(sucessMessage: 'updatingSucsess'.tr()));
       });
     } else {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "466897115771",
+    "project_id": "khwater-fa3b8",
+    "storage_bucket": "khwater-fa3b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466897115771:android:efe5d2fade4db6ba01e0de",
+        "android_client_info": {
+          "package_name": "com.example.khwater"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaTe5l7BklhYcH9_8KRG-qfMihm99q07c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

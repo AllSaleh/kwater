@@ -35,5 +35,12 @@
     "fiureAddingFavioret":"Failed Adding To Faviorte",
     "addeddFafiortSucsess":"Addedd To Faviorte Sucsess",
     "fiuredeletingFavioret":"Failed Remove From Faviorte",
-    "removedFafiortSucsess":"Removed From Faviorte Sucsess"
+    "removedFafiortSucsess":"Removed From Faviorte Sucsess",
+    "connectionTimeOut":"Conniction TimeOut",
+    "sendTimeOut":"Send TimeOut",
+    "receiveTimeout":"Receive TimeOut",
+    "connectionError":"Server Conniction Error",
+    "cancelConnection":"Cancel Server Connection",
+    "problem":"Problem In Server Try Later",
+    "connractus":"Contact Us"
 }
