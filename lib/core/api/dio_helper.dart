@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 class DioHelper {
-  final String _baseUrl = 'https://www.emmystore1.com/khwater';
+  final String _baseUrl = 'Here is Api Url';
 
   final Dio _dio = Dio();
 

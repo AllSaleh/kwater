@@ -7,21 +7,17 @@ import 'package:khwater/core/styls.dart';
 import 'package:khwater/features/home/view_model/home_cubit.dart';
 import 'package:khwater/features/home/views/widgets/app_bar_continer.dart';
 
-class HomeBodyView extends StatefulWidget {
+class HomeBodyView extends StatelessWidget {
   const HomeBodyView({super.key});
 
-  @override
-  State<HomeBodyView> createState() => _HomeBodyViewState();
-}
+ 
 
-class _HomeBodyViewState extends State<HomeBodyView> {
-  ScrollController controller=ScrollController();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return CustomScrollView(
-          controller: controller,
+          
           slivers: [
             SliverAppBar(
               toolbarHeight: 80,
